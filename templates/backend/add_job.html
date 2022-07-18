@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+<html>
+{% load static %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<center><div class="col-md-3 col-md-offset-3">
+<h1>Add job advert</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.media}}
+    {{ form.as_p}}
+    <button class="btn btn-primary" type="submit">Submit</button><br>
+</div></center>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+{% endblock %}
+</hmtl>

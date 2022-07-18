@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% extends 'main.html'%} 
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="description" content="" />
+	</head>
+	<body>
+	{% block content %} 
+    {% include 'navbar.html' %}
+	
+	<center>
+	<h1>All jobs advertisements</h1>
+	<center> 
+		<hr>  
+	   
+	<h4>We have found {{jobs.count}} adverts.<h4> 
+	<br>
+	
+			{%for job in jobs%}
+<h5>		
+<div class="container">
+<div class="card">
+    <h5 class="card-header">{{job.title}}</h5>
+    <div class="card-body">     
+      <p class="card-text">Programming language: {{ job.proglanguage}}</p>
+	  <p class="card-text">Category: {{job.category}}</p>
+      <p class="card-text">Price: {{job.price}}$</p>
+	  <p class="card-text">Published: {{job.published}}</p>
+      <a href="{% url 'advert_info' job.id %}" class="btn btn-primary">See more</a>
+	  {% if user.is_authenticated and user.is_superuser %}
+	  <a href="{% url 'delete_job' job.id %}" class="btn btn-danger">Delete</a>
+	  {% endif %} 
+    </div>
+  </div>
+  <br>
+</div>
+</h5>
+
+{%endfor%}
+<br>
+
+<nav aria-label="Page navigation example">
+	<ul class="pagination justify-content-center">
+	  
+
+
+{% if jobss.has_previous %}
+<li class="page-item"><a class="page-link" href = "?page=1">&laquo First</a></li>
+<li class="page-item"><a class="page-link" href = "?page={{ jobss.previous_page_number }}">Previous</a></li>
+{% endif %}
+
+{% for i in nums %}
+<li class="page-item"><a class="page-link" href = "?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+{% endfor %}
+
+{% if jobss.has_next %}
+<li class="page-item"><a class="page-link" href = "?page={{jobss.next_page_number}}">Next</a></li>
+<li class="page-item"><a class="page-link" href = "?page={{jobss.paginator.num_pages}}">Last &raquo</a></li>
+{% endif %}
+
+</ul>
+</nav>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+{% endblock %}
+</body>
+</html>

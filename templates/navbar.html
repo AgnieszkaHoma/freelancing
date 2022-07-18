@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <a href={% url 'home' %} class="logo">
+            <h2>Flancer</h2>
+        </a>
+        <div class="items">
+            <ul>
+                <a href="{%url 'home'%}">Home</a>
+                <a href="{%url 'freelancers'%}">Freelancers</a>
+                <a href="{% url 'jobs_adverts' %}">Job advertisements</a>
+                <a href="{%url 'about'%}">About</a>
+                <a href="{%url 'contact'%}">Contact</a>
+            </ul>
+        </div>
+        {% if user.is_authenticated %}	
+        <div class="btn">           
+            <a href="{% url 'profile' user %}"><button class="btn btn-primary">PROFILE</button></a>
+            <a href="{% url 'signout'%}"><button class="btn btn-primary">LOGOUT</button></a>
+        </div> 
+        {% else %}
+        <div class="btn">     
+            <a href="{% url 'loginPage' %}"><button class="btn btn-primary">LOGIN</button></a>
+        </div>
+
+        {% endif %}
+        
+    </div>
+</body>
+</html>

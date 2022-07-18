@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/jobs.css'%}" />
+    </head>
+<body>
+{% block content %}
+{% include 'navbar.html' %}
+{% static 'images' as baseUrl %}
+
+    <div class="container py-4 my-4 mx-auto d-flex flex-column">
+        <div class="header">
+            <div class="row r1">
+                <div class="col-md-9 abc">
+                    <h1>{{ job.title }} </h1>
+                </div>
+            </div>
+        </div>
+        <div class="container-body mt-4">
+            <div class="row r3">
+                <div class="col-md-5 p-0 klo">
+                    <ul>
+                        <li>Category: {{ job.category }}</li>
+                        <li>Programming language: {{job.proglanguage}}</li>
+                        <li>Price: {{ job.price }}$</li>
+                        <li>Description: <br>{{ job.description|safe }}</li>
+                    </ul>
+                </div>
+                <div class="col-md-7"> 
+                    <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188_960_720.jpg" alt="Job" width="90%" height="95%"> 
+                </div>
+            </div>
+        </div>
+        <div class="footer d-flex flex-column mt-5">
+            <div class="row r4">
+                           
+                <div class="col-md-2 mio offset-md-4">
+                   <a type="button" class="btn btn-outline-info" href="{% url 'jobs_adverts' %}">Back to all jobs</a></div>
+            </div>
+            <br>
+            <h6>Published: {{job.published}}</h6>
+        </div>
+        <br>  
+    </div>
+
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+{% endblock %}
+</html>
+</body>

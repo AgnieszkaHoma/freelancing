@@ -1,0 +1,56 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/searchpage.css' %}">  
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<title>Search</title>
+    </head>
+<body>
+{% include 'navbar.html' %}
+{% block content %}
+<br>
+      {% if searched %}
+          <center><h1>You searched for {{searched}}</h1><br>
+            {% for freelancer in freelancers %}
+            
+            <div class="card text-center" style="margin-left: 500px; margin-right:500px;">
+              <div class="card-header">{{ freelancer.title }}</div>
+              <div class="card-body">
+                <h6 class="card-text">Programming language: {{freelancer.proglanguage}}</h6>
+                <h6 class="card-text">Price starts from:  {{freelancer.pricemin}}$</h6>
+                <h6 class="card-text">Email:  {{freelancer.email}}</h6><br>
+                <a  class="btn btn-primary" role="button" href="{% url 'freelancer_info' freelancer.id %}">Check offer</a>
+              </div>
+              
+            </div>
+<br>
+            {%endfor%}
+      {% else %}
+      <center><h1>No data to show</h1><br></center>
+      {%endif%}
+
+       {% comment %} <h4> {% for job in jobs %}
+
+        <div class="card w-75">
+              <div class="card-header">
+                {{job.title}}
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <p>Category: {{job.category}}</p>
+                  <p>{{job.published}}</p>
+                </div>
+                <a  class="button" role="button" href="{% url 'advert_info' job.id %}">Check offer</a>
+              </div>
+            </div> {% endcomment %}
+<br>
+        {% comment %} {% endfor %} {% endcomment %}
+      </h4>
+        </div>
+      </center>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        {% endblock %}
+
+        
+</body>
+</html>

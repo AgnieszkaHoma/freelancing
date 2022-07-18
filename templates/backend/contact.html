@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends 'main.html'%}
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="description" content="" />
+		
+	</head>
+	<body>		
+		{% block content %}
+        {% include 'navbar.html' %}
+
+		{% if user.is_authenticated %}
+		<br>
+
+	<center> 
+		<br>
+					
+				</center>
+
+				<div class="container d-flex justify-content-center">
+					<div class="row">
+						<div class="col-md-6">
+					<img src="https://cdn.pixabay.com/photo/2016/11/30/18/14/chat-1873543_960_720.png">	
+				</div><!--col-->
+					<div class="col-md-6" style="padding-left: 60px;">
+							<h2 class="form-title">Contact us</h2>
+								<p class="justify text-muted">Have an enquiry or would like to give us feedback?<br>Contact with us!</p>
+		
+								<form action="" method="post">
+									{% csrf_token %}
+									{{ form.as_p}}
+									<button class="btn btn-primary" type="submit">Send</button>
+								</form>
+								
+					</div><!--col-->
+				</div><!--row-->
+					
+				</div>
+
+		{% else %}
+		<br><br><br>
+			<center><h3>Sorry, you have to be logged in to contact with us. <br> Please, logged in or register.</h3><br>
+			<a href="{% url 'loginPage' %}">
+			<button class="btn btn-primary" type="submit">Login</button></a>
+			<a href="{% url 'register' %}">
+			<button class="btn btn-primary" type="submit">Register</button></a><br>
+		</center>
+		{% endif %}
+		{% endblock %}
+		
+	</body>
+</html>

@@ -1,0 +1,206 @@
+{% extends 'main.html' %}
+{% load static %}
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'styles/jobs.css'%}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+        
+    {% block content %}
+    {% include 'navbar.html' %}
+
+    <div class="container py-4 my-4 mx-auto d-flex flex-column">
+        <div class="header">
+            <div class="row r1">
+                <div class="col-md-9 abc">
+                    <h2>{{ freelancer.title }} </h2>
+                </div>
+                
+            </div>
+          <div class="col-md-7" >
+                    <img src="{{freelancer.image.url}}" width="85%" height="90%">
+                </div>
+        </div>
+        <div class="container-body mt-4">
+            
+            <div class="row r3">
+                <div class="col-md-5 p-0 klo">
+                    <h5>
+                        <strong>Name: </strong>{{freelancer.firstname}}<br>
+                        <strong>Surname: </strong>{{freelancer.lastname}}<br>
+                        <strong>Category: </strong>{{ freelancer.category }}<br>
+                        <strong>Programming language: </strong>{{freelancer.proglanguage}}<br>
+                        <strong>Email: </strong>{{ freelancer.email }}<br>
+                        <strong>Phone: </strong>{{ freelancer.phone }}<br><hr>
+                        <strong><br></strong>{{ freelancer.description|safe }}<br></h5>
+                    <br>
+
+                <br>
+                    
+                </div>
+
+                    <div class="container">
+                        
+                        <div>
+                            <p class="h2 text-center mb-5">Price list</p>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-lg-3 col-md-6 mt-md-0 mt-5">
+                                <div class="card d-flex align-items-center justify-content-center">
+                                    <div class="ribon"> <span class="fas fa-broom"></span> </div>
+                                    <h4 class="h-1 pt-5">Basic</h4> <span class="price"> <sup class="sup">$</sup> <span
+                                            class="number">{{freelancer.pricemin}}</span> </span>
+                                    <ul class="mb-5 list-unstyled text-muted">
+                                        <li><span class="fa fa-check me-2"></span>1 page</li>
+                                        <li><span class="fa fa-check me-2"></span>Responsive design</li>
+                                        <li><span class="fa fa-check me-2"></span>Good quality</li>
+                                        <li><span class="fa fa-check me-2"></span>{{freelancer.deliveryDaysForPricemin}} days delivery</li>
+                                    </ul>
+                                    {% comment %} {% if user.is_authenticated %}
+                                    <div>
+                                        <a type="button" class="btn btn-primary" href="{% url 'application' freelancer.id %}">Continue</a>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                        <a type="button" class="btn btn-primary" href="{% url 'loginPage' %}">Log in first</a>
+                                    </div>
+                                    {% endif %} {% endcomment %}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mt-md-0 mt-5" >
+                                <div class="card d-flex align-items-center justify-content-center">
+                                    <div class="ribon"> <span class="fas fa-broom"></span> </div>
+                                    <h4 class="h-1 pt-5">Standard</h4> <span class="price"> <sup class="sup">$</sup> <span
+                                            class="number">{{freelancer.pricemid}}</span> </span>
+                                    <ul class="mb-5 list-unstyled text-muted">
+                                        <li><span class="fa fa-check me-2"></span>2 pages</li>
+                                        <li><span class="fa fa-check me-2"></span>Design customization</li>                                    
+                                        <li><span class="fa fa-check me-2"></span>High quality</li>
+                                        <li><span class="fa fa-check me-2"></span>{{freelancer.deliveryDaysForPricemid}} days delivery</li>
+                                    </ul>
+                                    {% comment %} {% if user.is_authenticated %}
+                                    <div>
+                                        <a type="button" class="btn btn-primary" href="{% url 'application' freelancer.id %}">Continue</a>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                        <a type="button" class="btn btn-primary" href="{% url 'loginPage' %}">Log in first</a>
+                                    </div>
+                                    {% endif %} {% endcomment %}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mt-md-0 mt-5">
+                                <div class="card d-flex align-items-center justify-content-center">
+                                    <div class="ribon"> <span class="fas fa-broom"></span> </div>
+                                    <h4 class="h-1 pt-5">Premium</h4> <span class="price"> <sup class="sup">$</sup> <span
+                                            class="number">{{freelancer.pricemax}}</span> </span>
+                                    <ul class="mb-5 list-unstyled text-muted">                                       
+                                        <li><span class="fa fa-check me-2"></span>Include source code</li>
+                                        <li><span class="fa fa-check me-2"></span>Design customization</li>
+                                        <li><span class="fa fa-check me-2"></span>High quality</li>
+                                        <li><span class="fa fa-check me-2"></span>{{freelancer.deliveryDaysForPricemax}} days delivery</li>
+                                    </ul>
+                                    {% comment %} {% if user.is_authenticated %}
+                                    <div>
+                                        <a type="button" class="btn btn-primary" href="{% url 'application' freelancer.id %}">Continue</a>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                        <a type="button" class="btn btn-primary" href="{% url 'loginPage' %}">Log in first</a>
+                                    </div>
+                                    {% endif %} {% endcomment %}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mt-md-0 mt-5">
+                                <div class="card d-flex align-items-center justify-content-center">
+                                    <div class="ribon"> <span class="fas fa-broom"></span> </div>
+                                    <h4 class="h-1 pt-5">Platinum</h4> <span class="price"> <sup class="sup">$</sup> <span
+                                            class="number">{{freelancer.priceextra}}</span> </span>
+                                    <ul class="mb-5 list-unstyled text-muted">
+                                        <li><span class="fa fa-check me-2"></span>Include source code</li>
+                                        <li><span class="fa fa-check me-2"></span>Design customization</li>
+                                        <li><span class="fa fa-check me-2"></span>High quality</li>
+                                        <li><span class="fa fa-check me-2"></span>{{freelancer.deliveryDaysForPriceextra}} days delivery</li>
+                                    </ul>
+                                    
+                                    {% comment %} {% if user.is_authenticated %}
+                                    <div>
+                                        <a type="button" class="btn btn-primary" href="{% url 'application' freelancer.id %}">Continue</a>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                        <a type="button" class="btn btn-primary" href="{% url 'loginPage' %}">Log in first</a>
+                                    </div>
+                                    {% endif %} {% endcomment %}
+
+                                </div>
+                            </div>
+                
+                        </div>
+
+        </div>
+        <div class="footer d-flex flex-column mt-5">
+            <div class="row r4">
+
+
+                {% comment %} {% if user.is_authenticated %}
+                <div class="col-md-2 myt ">
+                    <a type="button" class="btn btn-outline-info" href="{% url 'application' job.id %}">Apply for
+                        job</a>
+                </div>
+                {% else %}
+                <div class="col-md-2 myt ">
+                    <a type="button" class="btn btn-outline-info" href="{% url 'loginPage' %}">Log in to apply</a>
+                </div>
+                {% endif %} {% endcomment %}
+            </div>
+            <br>
+            <h6>Published: {{freelancer.published}}</h6>
+            <br>
+            <hr>
+
+
+            <h2>Comments section</h2><br>
+            {% if not user.is_authenticated%}
+            <p>Sorry, you are not allowed to comment, log in first</p>
+            {% for comment in freelancer.comments.all %}
+            <strong><i>{{comment.name}} -
+                    {{comment.date_added}}</i></strong>
+            {{comment.body}}
+            {% endfor %}
+            {%else%}
+            <a href="{%url 'add_comment' freelancer.pk%}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg> Add comment</a><br>
+            {% if not freelancer.comments.all %}
+            No comments yet about this freelancer
+            {% else %}
+
+            {% for comment in freelancer.comments.all %}
+            <strong><i>{{comment.name}} -
+                    {{comment.date_added}}</i></strong>
+            {{comment.body}}
+            <br><br>
+            {%endfor%}
+            {%endif%}
+            {%endif%}
+            <br><br>
+        </div>
+        <br>
+    </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    {% endblock %}
+
+</html>
+</body>

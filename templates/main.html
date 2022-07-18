@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<title>Flancer</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/search.css' %}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">		
+	</head>
+
+	<body>
+		{% block content %}
+		{% include 'navbar.html' %}
+		<header>
+            <!-- Intro settings -->
+            <style>
+              /* Default height for small devices */
+              #intro-example {
+                height: 400px;
+              }
+          
+              /* Height for devices larger than 992px */
+              @media (min-width: 992px) {
+                #intro-example {
+                  height: 600px;
+                }
+              }
+			  .background-image {
+                min-height: calc(100vh - 56px);
+                background-image: url("{%  static 'n.jpg' %}");
+
+			  background-attachment: fixed;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			  z-index: 100; }
+            </style>      
+          
+            <!-- Background image -->
+            <div
+              id="intro-example"
+              class="p-5 text-center bg-image"
+              style="background-image: url('https://cdn.stocksnap.io/img-thumbs/960w/top-workspace_ILQA1VXXOJ.jpg'); height: 715px; background-position: center top; width: 100vw; background-attachment: fixed;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			  z-index: 100;"
+            >
+              <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+                <div class="d-flex justify-content-center align-items-center h-100 ">
+                  <div class="text-white">
+                    <h1 class="mb-3" style="padding-top:10px;">Freelance</h1>
+                    <h5 class="mb-4">Find perfect services for you</h5>
+					<div class="row">
+                    <div class="d-flex justify-content-center h-100">                    
+                      <div class="search">
+                        <form  class="d-flex" method=POST action="{% url 'search' %}" >
+                          {% csrf_token %}
+                          <input  class="search-input" type="search" aria-label="Search" placeholder="Search freelancers" name="searched">
+                          <button class="btn btn-primary" type="submit">Search</button>
+                        </form>
+                      </div>                    
+                  </div>
+                  <br>
+
+				  
+              </div>
+             </div>
+          </div>
+			<br>
+            <!-- Background image -->
+			
+          </header>	
+		  <br><br>
+		  <center><h1 class="section-title">Popular freelancers</h1><center><br>
+		  <div class="container-fluid d-flex justify-content-center mt-100">
+
+         <div class="row">
+            <div class="col-lg-4">
+               <div class="card">
+                  <div class="card-body text-center">
+                     
+                     <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="rounded-circle" width="200" height="200"> 
+                     <h5 class="card-title mt-2 mb-1">Rabbie Peritz</h5>
+                     <span class="fs-2 mb-3 font-weight-bold">PHP Developer</span>
+                     <p class="mb-3 mt-3">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"</p>
+                    
+                     <ul class="list-inline">
+                       <li class="list-inline-item"><a><i class="fa fa-facebook fa-2x facebook"></i></a></li>
+                       <li class="list-inline-item"><a><i class="fa fa-twitter fa-2x twitter"></i></a></li>
+                       <li class="list-inline-item"><a><i class="fa fa-linkedin fa-2x linkedin"></i></a></li>
+                       <li class="list-inline-item"><a><i class="fa fa-google fa-2x google"></i></a></li>
+                     </ul> 
+
+                  </div>
+               </div>
+            </div>
+
+
+            <div class="col-lg-4">
+                <div class="card">
+                  <div class="card-body text-center">
+                     
+                     <img src="https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwcG9ydHJhaXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" class="rounded-circle" width="200" height="200"> 
+                     <h5 class="card-title mt-2 mb-1">Graciana Matei</h5>
+                     <span class="fs-2 mb-3 font-weight-bold">Python Developer</span>
+                     <p class="mb-3 mt-3">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"</p>
+                    
+                     <ul class="list-inline">
+                       <li class="list-inline-item"><a><i class="fa fa-facebook fa-2x facebook"></i></a></li>
+                       <li class="list-inline-item"><a><i class="fa fa-twitter fa-2x twitter"></i></a></li>
+                       <li class="list-inline-item"><a><i class="fa fa-linkedin fa-2x linkedin"></i></a></li>
+                       <li class="list-inline-item"><a><i class="fa fa-google fa-2x google"></i></a></li>
+                     </ul> 
+
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                  <div class="card-body text-center">
+                     
+                     <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="rounded-circle" width="200" height="200"> 
+                     <h5 class="card-title mt-2 mb-1">Adam McDevitt</h5>
+                     <span class="fs-2 mb-3 font-weight-bold">C++ Developer</span>
+                     <p class="mb-3 mt-3">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"</p>
+                    
+                     <ul class="list-inline">
+                       <li class="list-inline-item"><a><i class="fa fa-facebook fa-2x facebook"></i></a></li>
+                       <li class="list-inline-item"><a><i class="fa fa-twitter fa-2x twitter"></i></a></li>
+                       <li class="list-inline-item"><a><i class="fa fa-linkedin fa-2x linkedin"></i></a></li>
+                       <li class="list-inline-item"><a><i class="fa fa-google fa-2x google"></i></a></li>
+                     </ul> 
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+		  <!-- Footer -->
+		  <div class="footer-basic">
+			<footer>
+				<div class="social"><a href="https://github.com/AgnieszkaHoma/jobPortal"><i class="icon ion-social-github"></i></a></div>
+				<ul class="list-inline">
+					<li class="list-inline-item"><a href="#">Home</a></li>
+					<li class="list-inline-item"><a href="#">Freelancers</a></li>
+          <li class="list-inline-item"><a href="#">Job advertisements</a></li>
+					<li class="list-inline-item"><a href="#">About</a></li>
+					<li class="list-inline-item"><a href="#">Contact</a></li>
+					{% comment %} <li class="list-inline-item"><a href="#">Privacy Policy</a></li> {% endcomment %}
+				</ul>
+				<p class="copyright">Agnieszka Homa, Bartosz Cop, Miłosz Bełch © 2022</p>
+			</footer>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+  <!-- Footer -->
+		{% endblock %}
+	</body>
+</html>

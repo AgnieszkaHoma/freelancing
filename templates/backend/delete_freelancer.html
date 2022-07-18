@@ -1,0 +1,16 @@
+{% extends 'main.html'%}
+{% block content %}
+{% include 'navbar.html'%}
+<center>
+<br><br>
+
+<h3>Delete: {{freelancer.title}}</h3>
+
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        <strong>Are you sure? </strong><br><br>
+        <button class="btn btn-danger">Delete</button>
+    </div>
+</center>
+{% endblock %}
